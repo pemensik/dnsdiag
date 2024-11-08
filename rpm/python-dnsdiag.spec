@@ -50,15 +50,18 @@ rm -rf %{pypi_name}.egg-info
 %install
 %py3_install
 
+for BIN in dns{eval,ping,traceroute}; do
+  # replace easyinstall wrappers by scripts itself
+  mv %{buildroot}%{_bindir}/$BIN{.py,}
+done
+
 %files -n python3-%{pypi_name}
 %license LICENSE
 %doc README.md
 %{_bindir}/dnseval
-%{_bindir}/dnseval.py
 %{_bindir}/dnsping
-%{_bindir}/dnsping.py
 %{_bindir}/dnstraceroute
-%{_bindir}/dnstraceroute.py
+# https://github.com/farrokhi/dnsdiag/issues/122
 %{python3_sitelib}/util
 %{python3_sitelib}/%{pypi_name}-%{pypi_version}-py%{python3_version}.egg-info
 
