@@ -7,7 +7,7 @@ Version:        %{pypi_version}
 Release:        %autorelease
 Summary:        DNS Measurement, Troubleshooting and Security Auditing Toolset (ping, traceroute)
 
-License:        BSD
+License:        BSD-2-Clause
 URL:            https://dnsdiag.org/
 Source0:        %{pypi_source}
 BuildArch:      noarch
